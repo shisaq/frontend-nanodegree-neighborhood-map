@@ -17,8 +17,9 @@
             <li class="address-item">hi</li>
             <li class="address-item">you</li>
         </ul>
-        <div id="google-map">asdgasd</div>
+        <div id="google-map"></div>
     </div>
+    <script src="js/lib/knockout-3.4.0.js"></script>
     <script>
         var hamburgerBtn = document.getElementById('hamburger-btn');
         var addressList = document.getElementById('address-list');
@@ -35,11 +36,9 @@
         // load Google Map
         function initMap () {
             var map = new google.maps.Map(googleMap, {
-                center: {lat: 40.4425525, lng: -79.9563025},
+                center: {lat: 40.4442526, lng: -79.9554277},
                 zoom: 18
             });
-
-
         }
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA22nTEP7c-BkxI3lamWBpwrpfAEtgZ_as&callback=initMap"></script>
