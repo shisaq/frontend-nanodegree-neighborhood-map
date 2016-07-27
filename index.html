@@ -13,13 +13,14 @@
             <button id="hamburger-btn" class="list-btn fontawesome-reorder"></button>
             <h1 class="page-title">Neighborhood Map</h1>
         </header>
-        <ul id="address-list">
-            <li class="address-item">hi</li>
-            <li class="address-item">you</li>
+        <ul id="address-list" data-bind="foreach: addressList">
+            <li class="address-item" data-bind="text: title"></li>
         </ul>
         <div id="google-map"></div>
     </div>
     <script src="js/lib/knockout-3.4.0.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
     <script>
         var hamburgerBtn = document.getElementById('hamburger-btn');
         var addressList = document.getElementById('address-list');

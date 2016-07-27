@@ -66,7 +66,7 @@ h4 {
     height: calc(100% - 55px);
     position: absolute;
     opacity: 0.5;
-    text-align: center;
+    /* text-align: center; */
     /* This trasform moves the drawer off canvas. */
     -webkit-transform: translate(-100%, 0);
     transform: translate(-100%, 0);
@@ -82,10 +82,11 @@ h4 {
 
 /* define evety style of address name */
 .address-item {
-    padding: 10px 0;
+    padding: 10px 0 10px 10px;
     font-size: 18px;
     font-weight: bold;
     border-bottom: 1px solid #000;
+    overflow: hidden;
 }
 
 .address-item:last-child {
@@ -95,6 +96,7 @@ h4 {
 .address-item:hover {
     background-color: #315065;
     color: salmon;
+    cursor: pointer;
 }
 
 /* make the title in the same line with hamburger button */
