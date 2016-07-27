@@ -43,11 +43,13 @@ h4 {
   font-family: 'FontAwesome', sans-serif;
 }
 
+/* the main title of the page */
 #page-head {
     width: 100%;
     margin: 10px 0;
 }
 
+/* the hamburger button */
 .list-btn {
     font-size: 30px;
     border: none;
@@ -55,10 +57,13 @@ h4 {
     background-color: #fff;
 }
 
+/* shows all the addresses on the left side of page */
 #address-list {
     z-index: 10;
     background-color: salmon;
     width: 100%;
+    max-width: 300px;
+    height: calc(100% - 55px);
     position: absolute;
     opacity: 0.5;
     text-align: center;
@@ -69,11 +74,13 @@ h4 {
     transition: transform 0.3s ease;
 }
 
+/* toggle it when click the hamburger button, by using js to control css */
 #address-list.open {
     -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
 }
 
+/* define evety style of address name */
 .address-item {
     padding: 10px 0;
     font-size: 18px;
@@ -85,11 +92,36 @@ h4 {
     border-bottom: none;
 }
 
+/* make the title in the same line with hamburger button */
 .page-title {
     display: inline-block;
 }
 
+/* this div will load google map */
 #google-map {
     height: calc(100% - 55px);
     background-color: skyblue;
+}
+
+/* responsive screen */
+@media screen and (min-width: 730px) {
+    .list-btn {
+        display: none;
+    }
+
+    .page-title {
+        padding-left: 10px;
+    }
+
+    #address-list {
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+
+    #google-map {
+        width: calc(100% - 300px);
+        position: absolute;
+        right: 0;
+    }
 }
