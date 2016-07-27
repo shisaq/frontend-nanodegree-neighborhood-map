@@ -92,6 +92,11 @@ h4 {
     border-bottom: none;
 }
 
+.address-item:hover {
+    background-color: #315065;
+    color: salmon;
+}
+
 /* make the title in the same line with hamburger button */
 .page-title {
     display: inline-block;

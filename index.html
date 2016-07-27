@@ -31,6 +31,17 @@
         googleMap.addEventListener('click', function () {
             addressList.classList.remove('open');
         });
+
+        // load Google Map
+        function initMap () {
+            var map = new google.maps.Map(googleMap, {
+                center: {lat: 40.4425525, lng: -79.9563025},
+                zoom: 18
+            });
+
+
+        }
     </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA22nTEP7c-BkxI3lamWBpwrpfAEtgZ_as&callback=initMap"></script>
 </body>
 </html>
