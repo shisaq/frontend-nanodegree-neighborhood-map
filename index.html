@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neighborhood Map</title>
+    <link rel="stylesheet" href="http://weloveiconfonts.com/api/?family=fontawesome">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="container">
+        <header id="page-head">
+            <button id="hamburger-btn" class="list-btn fontawesome-reorder"></button>
+            <h1 class="page-title">Neighborhood Map</h1>
+        </header>
+        <ul id="address-list">
+            <li class="address-item">hi</li>
+            <li class="address-item">you</li>
+        </ul>
+        <div id="google-map">asdgasd</div>
+    </div>
+    <script>
+        var hamburgerBtn = document.getElementById('hamburger-btn');
+        var addressList = document.getElementById('address-list');
+        var googleMap = document.getElementById('google-map');
+
+        hamburgerBtn.addEventListener('click', function () {
+            addressList.classList.toggle('open');
+        });
+
+        googleMap.addEventListener('click', function () {
+            addressList.classList.remove('open');
+        });
+    </script>
+</body>
+</html>
