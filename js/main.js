@@ -6,14 +6,14 @@ var Address = function (data) {
 var ViewModel = function () {
     var self = this;
 
+    // get the search value and store it into currentAddress
+    this.currentAddress = ko.observable('');
+
     // build address list from data.js, and show them on the page
     this.addressList = ko.observableArray([]);
     initialAddresses.forEach(function (addressItem) {
         self.addressList.push(new Address(addressItem));
     });
-
-    this.currentAddress = ko.observable(self.addressList()[0]);
-    console.log(this.currentAddress().location());
 };
 
 ko.applyBindings(new ViewModel());
