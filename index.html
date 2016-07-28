@@ -13,8 +13,14 @@
             <button id="hamburger-btn" class="list-btn fontawesome-reorder"></button>
             <h1 class="page-title">Neighborhood Map</h1>
         </header>
-        <ul id="address-list" data-bind="foreach: addressList">
+        <ul id="address-list">
+            <li id="address-search"">
+                <input id="address-input" type="text" value="Search address">
+                <button id="address-filter">filter</button>
+            </li>
+            <!-- ko foreach: addressList -->
             <li class="address-item" data-bind="text: title"></li>
+            <!-- /ko -->
         </ul>
         <div id="google-map"></div>
     </div>

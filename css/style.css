@@ -24,6 +24,10 @@ h1 {
     font-size: 30px;
 }
 
+button {
+    outline: none;
+}
+
 /* fontawesome */
 [class*="fontawesome-"]:before {
   font-family: 'FontAwesome', sans-serif;
@@ -46,6 +50,11 @@ h1 {
     border: none;
     margin: 0 5px;
     background-color: #325165;
+}
+
+/* make the title in the same line with hamburger button */
+.page-title {
+    display: inline-block;
 }
 
 /* shows all the addresses on the left side of page */
@@ -89,9 +98,45 @@ h1 {
     cursor: pointer;
 }
 
-/* make the title in the same line with hamburger button */
-.page-title {
-    display: inline-block;
+#address-search {
+    height: 42px;
+    padding: 10px 0 10px 10px;
+}
+
+/* define address input css */
+#address-input {
+    height: inherit;
+    border: none;
+    background-color: #DB6B6C;
+    color: #315065;
+    font-size: 18px;
+    font-weight: bold;
+    overflow: hidden;
+    -webkit-user-select: text;
+}
+
+/* define filter button */
+#address-filter {
+    height: inherit;
+    font-size: 18px;
+    background-color: #315065;
+    color: #eaeaea;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+    border: none;
+    border-radius: 10px/40px;
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+#address-filter:hover {
+    background-color: #202f5f;
+}
+
+#address-filter:active {
+    border-top-color: #1b435e;
+    background-color: grey;
 }
 
 /* this div will load google map */
