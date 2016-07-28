@@ -21,27 +21,7 @@
     <script src="js/lib/knockout-3.4.0.js"></script>
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
-    <script>
-        var hamburgerBtn = document.getElementById('hamburger-btn');
-        var addressList = document.getElementById('address-list');
-        var googleMap = document.getElementById('google-map');
-
-        hamburgerBtn.addEventListener('click', function () {
-            addressList.classList.toggle('open');
-        });
-
-        googleMap.addEventListener('click', function () {
-            addressList.classList.remove('open');
-        });
-
-        // load Google Map
-        function initMap () {
-            var map = new google.maps.Map(googleMap, {
-                center: {lat: 40.4442526, lng: -79.9554277},
-                zoom: 18
-            });
-        }
-    </script>
+    <script src="js/google-manip.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA22nTEP7c-BkxI3lamWBpwrpfAEtgZ_as&callback=initMap"></script>
 </body>
 </html>

@@ -4,15 +4,13 @@ body,
 div,
 header,
 h1,
-h2,
-h3,
-h4,
 ul,
 li,
 button {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+    color: #eaeaea;
 }
 
 html,
@@ -26,18 +24,6 @@ h1 {
     font-size: 30px;
 }
 
-h2 {
-    font-size: 40px;
-}
-
-h3 {
-    font-size: 32px;
-}
-
-h4 {
-    font-size: 24px;
-}
-
 /* fontawesome */
 [class*="fontawesome-"]:before {
   font-family: 'FontAwesome', sans-serif;
@@ -46,7 +32,12 @@ h4 {
 /* the main title of the page */
 #page-head {
     width: 100%;
-    margin: 10px 0;
+    padding: 10px 0;
+    background-color: #325165;
+    color: #eaeaea;
+    -moz-box-shadow: 0 0 10px #212121 inset;
+    -webkit-box-shadow: 0 0 10px #212121 inset;
+    box-shadow: 0 0 10px #212121 inset;
 }
 
 /* the hamburger button */
@@ -54,19 +45,18 @@ h4 {
     font-size: 30px;
     border: none;
     margin: 0 5px;
-    background-color: #fff;
+    background-color: #325165;
 }
 
 /* shows all the addresses on the left side of page */
 #address-list {
     z-index: 10;
-    background-color: salmon;
+    background-color: #DB6B6C;
     width: 100%;
     max-width: 300px;
     height: calc(100% - 55px);
     position: absolute;
-    opacity: 0.5;
-    /* text-align: center; */
+    opacity: 0.8;
     /* This trasform moves the drawer off canvas. */
     -webkit-transform: translate(-100%, 0);
     transform: translate(-100%, 0);
@@ -85,7 +75,7 @@ h4 {
     padding: 10px 0 10px 10px;
     font-size: 18px;
     font-weight: bold;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #325165;
     overflow: hidden;
 }
 
@@ -95,7 +85,7 @@ h4 {
 
 .address-item:hover {
     background-color: #315065;
-    color: salmon;
+    color: #eaeaea;
     cursor: pointer;
 }
 

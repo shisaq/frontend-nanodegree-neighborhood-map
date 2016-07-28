@@ -1,5 +1,9 @@
 var initialAddresses = [
     {
+        title: 'Cathedral of Learning',
+        location: {lat: 40.4442526, lng: -79.953239}
+    },
+    {
         title: 'Carnegie Science Center',
         location: {lat: 40.445625, lng: -80.018205}
     },
@@ -14,10 +18,6 @@ var initialAddresses = [
     {
         title: "Children's Museum of Pittsburgh",
         location: {lat: 40.452771, lng: -80.006498}
-    },
-    {
-        title: 'Cathedral of Learning',
-        location: {lat: 40.4442526, lng: -79.953239}
     },
     {
         title: 'Fort Pitt Blockhouse',
