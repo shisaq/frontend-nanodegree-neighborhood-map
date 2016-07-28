@@ -9,7 +9,7 @@ li,
 button {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: 'Comic Sans MS', 'Helvetica', sans-serif;
     color: #eaeaea;
 }
 
@@ -98,6 +98,7 @@ button {
     cursor: pointer;
 }
 
+/* this li contains input and filter button */
 #address-search {
     height: 42px;
     padding: 10px 0 10px 10px;
@@ -107,12 +108,13 @@ button {
 #address-input {
     height: inherit;
     border: none;
+    outline: none;
     background-color: #DB6B6C;
     color: #315065;
+    font-family: 'Comic Sans MS', 'Helvetica', sans-serif;
     font-size: 18px;
     font-weight: bold;
     overflow: hidden;
-    -webkit-user-select: text;
 }
 
 /* define filter button */

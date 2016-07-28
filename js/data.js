@@ -16,8 +16,8 @@ var initialAddresses = [
         location: {lat: 40.4432629, lng: -79.9500285}
     },
     {
-        title: "Children's Museum of Pittsburgh",
-        location: {lat: 40.452771, lng: -80.006498}
+        title: 'Byham Theater',
+        location: {lat: 40.4439889, lng: -80.0018459}
     },
     {
         title: 'Fort Pitt Blockhouse',
