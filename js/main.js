@@ -17,7 +17,7 @@ var ViewModel = function () {
 
     // when click on an address, update the input area value
     this.updateCurrentAddress = function (currentAddress) {
-        self.currentAddress(currentAddress.title());
+        self.currentAddress(currentAddress);
     }
 };
 
