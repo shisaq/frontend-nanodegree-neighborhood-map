@@ -14,6 +14,11 @@ var ViewModel = function () {
     initialAddresses.forEach(function (addressItem) {
         self.addressList.push(new Address(addressItem));
     });
+
+    // when click on an address, update the input area value
+    this.updateCurrentAddress = function (currentAddress) {
+        self.currentAddress(currentAddress.title());
+    }
 };
 
 ko.applyBindings(new ViewModel());
