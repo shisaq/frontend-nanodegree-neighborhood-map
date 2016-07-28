@@ -64,6 +64,7 @@ button {
     width: 100%;
     max-width: 300px;
     height: calc(100% - 62px);
+    overflow: auto;
     position: absolute;
     opacity: 0.8;
     /* This trasform moves the drawer off canvas. */
