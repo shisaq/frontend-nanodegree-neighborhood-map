@@ -7,17 +7,17 @@ var ViewModel = function () {
     var self = this;
 
     // build address list from data.js, and show them on the page
-    this.addressList = ko.observableArray([]);
+    self.addressList = ko.observableArray([]);
     initialAddresses.forEach(function (addressItem) {
         self.addressList.push(new Address(addressItem));
     });
 
-    // get the search value and store it into currentAddress
-    this.currentAddress = ko.observable('');
+    // define the initial currentAddress to null from data.js
+    self.currentAddress = ko.observable(initialCurrentAddress);
     // when click on an address, update the input area value
     this.updateCurrentAddress = function (currentAddress) {
         self.currentAddress(currentAddress);
-    }
+    };
 };
 
 ko.applyBindings(new ViewModel());

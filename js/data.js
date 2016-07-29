@@ -40,3 +40,8 @@ var initialAddresses = [
         location: {lat: 40.446543, lng: -80.0152569}
     }
 ];
+
+var initialCurrentAddress = {
+    title: null,
+    location: null
+};

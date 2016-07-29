@@ -15,7 +15,7 @@
         </header>
         <ul id="address-list">
             <li id="address-search"">
-                <input id="address-input" type="text" autofocus="autofocus" placeholder="Search address" data-bind="value: currentAddress().title">
+                <input id="address-input" type="text" autofocus="autofocus" placeholder="Search address" data-bind="textInput: currentAddress().title">
                 <button id="address-filter">filter</button>
             </li>
             <!-- ko foreach: addressList -->
