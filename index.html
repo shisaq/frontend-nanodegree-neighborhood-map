@@ -19,7 +19,7 @@
                 <button id="address-filter">filter</button>
             </li>
             <!-- ko foreach: addressList -->
-            <li class="address-item" data-bind="text: title, click: $parent.updateCurrentAddress"></li>
+            <li class="address-item" data-bind="text: title, click: $parent.updateCurrentAddress, visible: $parent.shouldShowOut(title)"></li>
             <!-- /ko -->
         </ul>
         <div id="google-map"></div>
