@@ -28,6 +28,11 @@ button {
     outline: none;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 /* fontawesome */
 [class*="fontawesome-"]:before {
   font-family: 'FontAwesome', sans-serif;
