@@ -1,9 +1,11 @@
+// generate address class
 var Address = function (data) {
     this.title = ko.observable(data.title);
     this.location = ko.observable(data.location);
 }
 
-var ViewModel = function () {
+// start knockoutJS viewmodel
+var pickAddressViewModel = function () {
     var self = this;
 
     // build address list from data.js, and show them on the page
@@ -13,24 +15,22 @@ var ViewModel = function () {
     });
 
     // define the initial currentAddress to null from data.js
-    self.currentAddress = ko.observable(initialCurrentAddress);
-    self.currentAddress().title = ko.observable(null);
-    console.log(self.currentAddress().title());
-    // when click on an address, update the input area value
-    self.updateCurrentAddress = function (currentAddress) {
-        self.currentAddress(currentAddress);
-        console.log(self.currentAddress().title());
+    self.currentAddress = new Address(initialCurrentAddress);
+
+    // set current address to the recently clicked address
+    self.updateCurrentAddress = function (clickedAddress) {
+        self.currentAddress.title(clickedAddress.title());
+        self.currentAddress.location(clickedAddress.location());
     };
 
     // filter the address list by current address
     self.shouldShowOut = function (addressTitle) {
         // get the current title from input area
-        var inputTitle = self.currentAddress().title();
+        var inputTitle = self.currentAddress.title();
 
         // when current address is null, that means no input,
         // so every address should be visible
         if (inputTitle === null) {
-            console.log(inputTitle);
             return ko.observable(true);
         } else {
             // compare the addresses in the list with current address
@@ -48,4 +48,4 @@ var ViewModel = function () {
     };
 };
 
-ko.applyBindings(new ViewModel());
+ko.applyBindings(new pickAddressViewModel());
