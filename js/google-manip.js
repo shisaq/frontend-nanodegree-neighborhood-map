@@ -43,17 +43,19 @@ function initMap () {
         var marker = new google.maps.Marker(markerObj);
 
         markers.push(marker);
+
         // collect every marker into bounds
         bounds.extend(marker.position);
 
+        // when mouse over, highlight the marker
         marker.addListener('mouseover', function () {
             this.setIcon(highlightIcon);
         });
-
+        // when mouse out, make the marker color back to default
         marker.addListener('mouseout', function () {
             this.setIcon(defaultIcon);
         });
-
+        // when click, make the marker bounce
         marker.addListener('click', function (markerCopy) {
             return function () {
                 if (markerCopy.getAnimation() !== null) {
@@ -63,12 +65,12 @@ function initMap () {
                 }
             };
         }(marker));
-
     }
     // make sure every marker is inside the map
     map.fitBounds(bounds);
 }
 
+// custimize marker color by giving hexadecimal number
 function makeMarkerIcon(markerColor) {
     var markerImage = new google.maps.MarkerImage(
         'http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|'+ markerColor +
