@@ -65,7 +65,7 @@ a {
 /* shows all the addresses on the left side of page */
 #address-list {
     z-index: 10;
-    background-color: #DB6B6C;
+    background-color: #db6b6c;
     width: 100%;
     max-width: 300px;
     height: calc(100% - 62px);
@@ -115,7 +115,7 @@ a {
     height: inherit;
     border: none;
     outline: none;
-    background-color: #DB6B6C;
+    background-color: #db6b6c;
     color: #315065;
     font-family: 'Comic Sans MS', 'Helvetica', sans-serif;
     font-size: 18px;
