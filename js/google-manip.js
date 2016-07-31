@@ -13,6 +13,7 @@ googleMap.addEventListener('click', function () {
 
 // load Google Map
 var map;
+var markers = [];
 function initMap () {
     // define a basic map with necessary data
     map = new google.maps.Map(googleMap, {
@@ -21,7 +22,6 @@ function initMap () {
     });
 
     // show all markers depend on address data
-    var markers = [];
     var largeInfoWindow = new google.maps.InfoWindow();
     var bounds = new google.maps.LatLngBounds();
 
@@ -82,10 +82,16 @@ function makeMarkerIcon(markerColor) {
 
 // toggle marker animation
 function toggleBounce(marker) {
-    if (marker.getAnimation() !== null) {
-        marker.setAnimation(null);
-    } else {
-        marker.setAnimation(google.maps.Animation.BOUNCE);
+    for (var i = 0; i < markers.length; i++) {
+        if(markers[i].id !== marker.id) {
+            markers[i].setAnimation(null);
+        } else {
+            if (marker.getAnimation() !== null) {
+                marker.setAnimation(null);
+            } else {
+                marker.setAnimation(google.maps.Animation.BOUNCE);
+            }
+        }
     }
 }
 
@@ -101,6 +107,8 @@ function populateInfoWindow(marker, infowindow) {
         // Make sure the marker property is cleared if the infowindow is closed.
         infowindow.addListener('closeclick', function() {
             infowindow.marker = null;
+            // set marker animation to null when click close button
+            marker.setAnimation(null);
         });
         var streetViewService = new google.maps.StreetViewService();
         var radius = 50;
