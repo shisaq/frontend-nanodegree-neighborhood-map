@@ -82,10 +82,13 @@ function makeMarkerIcon(markerColor) {
 
 // toggle marker animation
 function toggleBounce(marker) {
+    // get every marker to judge
     for (var i = 0; i < markers.length; i++) {
+        // set every other marker animation back to null
         if(markers[i].id !== marker.id) {
             markers[i].setAnimation(null);
         } else {
+            // this is the clicked marker that should be toggled
             if (marker.getAnimation() !== null) {
                 marker.setAnimation(null);
             } else {
