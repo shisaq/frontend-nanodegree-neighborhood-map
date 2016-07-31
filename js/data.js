@@ -1,5 +1,9 @@
 var initialAddresses = [
     {
+        title: 'CONSOL Energy Center',
+        location: {lat: 40.439136, lng: -79.990595}
+    },
+    {
         title: 'Cathedral of Learning',
         location: {lat: 40.4442526, lng: -79.953239}
     },
