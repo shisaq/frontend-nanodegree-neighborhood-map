@@ -4,6 +4,7 @@ body,
 div,
 header,
 h1,
+h2,
 ul,
 li,
 button {
@@ -22,6 +23,11 @@ body,
 
 h1 {
     font-size: 30px;
+}
+
+h2 {
+    font-size: 20px;
+    color: #315065;
 }
 
 button {
@@ -151,6 +157,11 @@ a {
 #google-map {
     height: calc(100% - 62px);
     background-color: skyblue;
+}
+
+#pano {
+    width: 260px;
+    height: 200px;
 }
 
 /* responsive screen */

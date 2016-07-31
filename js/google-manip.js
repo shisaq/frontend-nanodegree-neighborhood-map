@@ -1,4 +1,4 @@
-// make address list toggled by hamburger button
+// make address list toggled by hamburger button when width < 730px
 var hamburgerBtn = document.getElementById('hamburger-btn');
 var addressList = document.getElementById('address-list');
 var googleMap = document.getElementById('google-map');
@@ -12,9 +12,10 @@ googleMap.addEventListener('click', function () {
 });
 
 // load Google Map
+var map;
 function initMap () {
     // define a basic map with necessary data
-    var map = new google.maps.Map(googleMap, {
+    map = new google.maps.Map(googleMap, {
         center: {lat: 40.4442526, lng: -79.9554277},
         zoom: 18
     });
@@ -55,16 +56,13 @@ function initMap () {
         marker.addListener('mouseout', function () {
             this.setIcon(defaultIcon);
         });
-        // when click, make the marker bounce
-        marker.addListener('click', function (markerCopy) {
-            return function () {
-                if (markerCopy.getAnimation() !== null) {
-                    markerCopy.setAnimation(null);
-                } else {
-                    markerCopy.setAnimation(google.maps.Animation.BOUNCE);
-                }
-            };
-        }(marker));
+        // when click, toggle the marker bounce, and show the street view
+        marker.addListener('click', function () {
+            // toggle marker animation
+            toggleBounce(this);
+            // show the street view, referenced by Google Map API course
+            populateInfoWindow(this, largeInfoWindow);
+        });
     }
     // make sure every marker is inside the map
     map.fitBounds(bounds);
@@ -80,4 +78,60 @@ function makeMarkerIcon(markerColor) {
         new google.maps.Point(10, 42),
         new google.maps.Size(21,42));
     return markerImage;
+}
+
+// toggle marker animation
+function toggleBounce(marker) {
+    if (marker.getAnimation() !== null) {
+        marker.setAnimation(null);
+    } else {
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+    }
+}
+
+// This function populates the infowindow when the marker is clicked. We'll only allow
+// one infowindow which will open at the marker that is clicked, and populate based
+// on that markers position.
+function populateInfoWindow(marker, infowindow) {
+    // Check to make sure the infowindow is not already opened on this marker.
+    if (infowindow.marker != marker) {
+        // Clear the infowindow content to give the streetview time to load.
+        infowindow.setContent('');
+        infowindow.marker = marker;
+        // Make sure the marker property is cleared if the infowindow is closed.
+        infowindow.addListener('closeclick', function() {
+            infowindow.marker = null;
+        });
+        var streetViewService = new google.maps.StreetViewService();
+        var radius = 50;
+        // In case the status is OK, which means the pano was found, compute the
+        // position of the streetview image, then calculate the heading, then get a
+        // panorama from that and set the options
+        function getStreetView(data, status) {
+            if (status == google.maps.StreetViewStatus.OK) {
+                var nearStreetViewLocation = data.location.latLng;
+                var heading = google.maps.geometry.spherical.computeHeading(
+                nearStreetViewLocation, marker.position);
+                infowindow.setContent('<h2>' + marker.title +
+                    '</h2><div id="pano"></div>');
+                var panoramaOptions = {
+                    position: nearStreetViewLocation,
+                    pov: {
+                        heading: heading,
+                        pitch: 30
+                    }
+                };
+                var panorama = new google.maps.StreetViewPanorama(
+                    document.getElementById('pano'), panoramaOptions);
+            } else {
+                infowindow.setContent('<h2>' + marker.title + '</h2>' +
+                    '<div>No Street View Found</div>');
+            }
+        }
+        // Use streetview service to get the closest streetview image within
+        // 50 meters of the markers position
+        streetViewService.getPanoramaByLocation(marker.position, radius, getStreetView);
+        // Open the infowindow on the correct marker.
+        infowindow.open(map, marker);
+    }
 }
