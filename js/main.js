@@ -24,7 +24,7 @@ var pickAddressViewModel = function () {
     };
 
     // filter the address list by current address
-    self.shouldShowOut = function (addressTitle) {
+    self.shouldShowOut = function (addressItem) {
         // get the current title from input area
         var inputTitle = self.currentAddress.title();
 
@@ -34,12 +34,12 @@ var pickAddressViewModel = function () {
             return ko.observable(true);
         } else {
             // compare the addresses in the list with current address
-            // `addressTitle` means an address in address list;
+            // `addressItem` means every address item object;
             // `toLowerCase` makes the input not essensial on letter case;
             // `indexOf` judges if the input (inside the parenthis) is a part of
             // the address. Reference from stack overflow:
             // http://stackoverflow.com/a/3480785/5769598
-            if (addressTitle().toLowerCase().indexOf(inputTitle.toLowerCase()) >= 0) {
+            if (addressItem.title().toLowerCase().indexOf(inputTitle.toLowerCase()) >= 0) {
                 return ko.observable(true);
             } else {
                 return ko.observable(false);
