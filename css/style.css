@@ -85,7 +85,7 @@ a {
     transition: transform 0.3s ease;
 }
 
-/* toggle it when click the hamburger button, by using js to control css */
+/* toggle it when click the hamburger button */
 #address-list.open {
     -webkit-transform: translate(0, 0);
     transform: translate(0, 0);

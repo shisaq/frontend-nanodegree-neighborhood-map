@@ -1,15 +1,4 @@
-// make address list toggled by hamburger button when width < 730px
-var hamburgerBtn = document.getElementById('hamburger-btn');
-var addressList = document.getElementById('address-list');
 var googleMap = document.getElementById('google-map');
-
-hamburgerBtn.addEventListener('click', function () {
-    addressList.classList.toggle('open');
-});
-
-googleMap.addEventListener('click', function () {
-    addressList.classList.remove('open');
-});
 
 // load Google Map
 var map;

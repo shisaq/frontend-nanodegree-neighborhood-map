@@ -23,6 +23,15 @@ var pickAddressViewModel = function () {
         self.currentAddress.location(clickedAddress.location());
     };
 
+    // define default address list is hide
+    self.currentStatus = ko.observable(-50);
+    // toggle address list by clicking hamburger button
+    self.toggleAddressList = function () {
+        return self.currentStatus() < 0 ?
+            self.currentStatus(150000) :
+            self.currentStatus(-50);
+    };
+
     // filter the address list by current address
     self.shouldShowOut = function (addressItem) {
         // get the current title from input area
