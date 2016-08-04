@@ -1,11 +1,9 @@
-var googleMap = document.getElementById('google-map');
-
 // load Google Map
 var map;
 var markers = [];
 function initMap () {
     // define a basic map with necessary data
-    map = new google.maps.Map(googleMap, {
+    map = new google.maps.Map(document.getElementById('google-map'), {
         center: {lat: 40.4442526, lng: -79.9554277},
         zoom: 18
     });
@@ -55,6 +53,9 @@ function initMap () {
     }
     // make sure every marker is inside the map
     map.fitBounds(bounds);
+
+    // Instantiate ViewModel
+    ko.applyBindings(new pickAddressViewModel());
 }
 
 // custimize marker color by giving hexadecimal number

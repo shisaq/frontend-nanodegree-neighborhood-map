@@ -49,3 +49,5 @@ var initialCurrentAddress = {
     title: null,
     location: null
 };
+
+var map;
