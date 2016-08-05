@@ -130,7 +130,7 @@ a {
 }
 
 /* define filter button */
-#address-filter {
+#address-clear {
     height: inherit;
     font-size: 18px;
     background-color: #315065;
@@ -144,11 +144,11 @@ a {
     padding: 0 10px;
 }
 
-#address-filter:hover {
+#address-clear:hover {
     background-color: #202f5f;
 }
 
-#address-filter:active {
+#address-clear:active {
     border-top-color: #1b435e;
     background-color: grey;
 }

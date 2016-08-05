@@ -16,7 +16,7 @@
         <ul id="address-list" data-bind="css: {open: currentStatus() > 0}">
             <li id="address-search"">
                 <input id="address-input" type="text" autofocus="autofocus" placeholder="Search address" data-bind="textInput: currentAddress.title">
-                <button id="address-filter">filter</button>
+                <button id="address-clear" data-bind="click: clearCurrentAddress">clear</button>
             </li>
             <!-- ko foreach: addressList -->
             <li class="address-item" data-bind="text: title, click: $parent.updateCurrentAddress, visible: $parent.shouldShowOut($data)"></li>

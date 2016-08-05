@@ -132,6 +132,12 @@ var pickAddressViewModel = function () {
         self.currentAddress.location(clickedAddress.location());
     };
 
+    // clear the current address
+    self.clearCurrentAddress = function () {
+        self.currentAddress.title('');
+        self.currentAddress.location('');
+    };
+
     // define default address list is hide
     self.currentStatus = ko.observable(-50);
     // toggle address list by clicking hamburger button
