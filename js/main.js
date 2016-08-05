@@ -23,9 +23,9 @@ var pickAddressViewModel = function () {
             self.toggleBounce(this);
             // show the info window
             self.populateInfoWindow(this, self.infoWindow);
-
+            // change the input value
             self.currentAddress.title(this.title);
-            // self.currentAddress.location(this.position);
+            self.currentAddress.location(this.position);
         });
         // when mouse over, highlight the marker
         this.marker.addListener('mouseover', function () {
@@ -36,6 +36,8 @@ var pickAddressViewModel = function () {
             this.setIcon(self.makeMarkerIcon('db6b6c'));
         });
     };
+
+    /* define several functions to use */
 
     // custimize marker color by giving hexadecimal number
     self.makeMarkerIcon = function (markerColor) {
@@ -60,7 +62,7 @@ var pickAddressViewModel = function () {
 
     // This function populates the infowindow when the marker is clicked. We'll only allow
     // one infowindow which will open at the marker that is clicked, and populate based
-    // on that markers position.
+    // on that markers position. Referenced by google map api course
     self.populateInfoWindow = function (marker, infowindow) {
         // Check to make sure the infowindow is not already opened on this marker.
         if (infowindow.marker != marker) {
