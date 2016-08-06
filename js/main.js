@@ -146,8 +146,10 @@ var pickAddressViewModel = function () {
     // track the input value
     self.currentAddress = ko.observable('');
 
-    // set current address to the recently clicked address
+    // show the info window of the clicked address
     self.updateCurrentAddress = function (clickedAddress) {
+        // hide the address list so that it'll not in the way of info window
+        self.currentStatus(-50);
         // toggle the marker animation
         self.toggleBounce(clickedAddress.marker);
         // show the info window
