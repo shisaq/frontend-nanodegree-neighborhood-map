@@ -26,9 +26,6 @@ var pickAddressViewModel = function () {
             self.toggleBounce(this);
             // show the info window
             self.populateInfoWindow(this, self.infoWindow);
-            // change the input value
-            self.currentAddress.title(this.title);
-            self.currentAddress.location(this.position);
         });
         // when mouse over, highlight the marker
         this.marker.addListener('mouseover', function () {
@@ -56,11 +53,10 @@ var pickAddressViewModel = function () {
 
     // toggle marker animation
     self.toggleBounce = function (marker) {
-        if (marker.getAnimation() !== null) {
-            marker.setAnimation(null);
-        } else {
         marker.setAnimation(google.maps.Animation.BOUNCE);
-        }
+        window.setTimeout(function() {
+            marker.setAnimation(null);
+        }, 1400);
     };
 
     // This function populates the infowindow when the marker is clicked. We'll only allow
@@ -75,11 +71,6 @@ var pickAddressViewModel = function () {
             // Make sure the marker property is cleared if the infowindow is closed.
             infowindow.addListener('closeclick', function() {
                 infowindow.marker = null;
-                // set marker animation to null when click close button
-                marker.setAnimation(null);
-                // make current address empty
-                self.currentAddress.title('');
-                self.currentAddress.location('');
             });
             var streetViewService = new google.maps.StreetViewService();
             var radius = 50;
@@ -152,19 +143,20 @@ var pickAddressViewModel = function () {
         self.bounds.extend(address.marker.position);
     });
 
-    // define the initial currentAddress to null from data.js
-    self.currentAddress = new Address(initialCurrentAddress);
+    // track the input value
+    self.currentAddress = ko.observable('');
 
     // set current address to the recently clicked address
     self.updateCurrentAddress = function (clickedAddress) {
-        self.currentAddress.title(clickedAddress.title());
-        self.currentAddress.location(clickedAddress.location());
+        // toggle the marker animation
+        self.toggleBounce(clickedAddress.marker);
+        // show the info window
+        self.populateInfoWindow(clickedAddress.marker, self.infoWindow);
     };
 
     // clear the current address
     self.clearCurrentAddress = function () {
-        self.currentAddress.title('');
-        self.currentAddress.location('');
+        self.currentAddress('');
     };
 
     // define default address list is hide
@@ -178,12 +170,12 @@ var pickAddressViewModel = function () {
 
     // make filtered address list depending on the input value
     self.filteredList = ko.computed(function() {
-        if (self.currentAddress.title() === null) {
+        if (self.currentAddress() === null) {
             // no input, return the default list
             return self.addressList();
         } else {
             // store the input value, without matching case
-            var filter = self.currentAddress.title().toLowerCase();
+            var filter = self.currentAddress().toLowerCase();
             // define a new list
             self.newList = ko.observableArray([]);
             // put every address item in address list compared with the input

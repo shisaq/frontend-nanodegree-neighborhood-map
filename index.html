@@ -15,7 +15,7 @@
         </header>
         <div class="address-sidebar" data-bind="css: {open: currentStatus() > 0}">
             <div id="address-search"">
-                <input id="address-input" type="text" autofocus="autofocus" placeholder="Search address" data-bind="textInput: currentAddress.title">
+                <input id="address-input" type="text" autofocus="autofocus" placeholder="Search address" data-bind="textInput: currentAddress">
                 <button id="address-clear" data-bind="click: clearCurrentAddress">clear</button>
             </div>
             <ul id="address-list" data-bind="foreach: filteredList">

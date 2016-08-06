@@ -46,11 +46,6 @@ var initialAddresses = [
     }
 ];
 
-var initialCurrentAddress = {
-    title: null,
-    location: null
-};
-
 var map;
 
 var foursquare_CLIENT_ID = 'E5RPW3KFBNWGODCETUOV2KXBIKDXPGYSE4LE0OKHGSFUD4KO';
