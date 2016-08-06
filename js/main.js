@@ -1,16 +1,19 @@
-// start knockoutJS viewmodel
+/* start knockoutJS viewmodel */
 var pickAddressViewModel = function () {
     // store this in self
     var self = this;
     // store bounds to make every marker fits on the map
     self.bounds = new google.maps.LatLngBounds();
     // store info window to make sure just show 1 info window
-    self.infoWindow = new google.maps.InfoWindow();
+    self.infoWindow = new google.maps.InfoWindow({
+        maxWidth: 300
+    });
 
     // generate address class
     var Address = function (data) {
         this.title = ko.observable(data.title);
         this.location = ko.observable(data.location);
+        // marker is used for google map api
         this.marker = new google.maps.Marker({
             title: this.title(),
             position: this.location(),
@@ -88,7 +91,7 @@ var pickAddressViewModel = function () {
                     var nearStreetViewLocation = data.location.latLng;
                     var heading = google.maps.geometry.spherical.computeHeading(
                     nearStreetViewLocation, marker.position);
-                    infowindow.setContent('<h2>' + marker.title +
+                    infowindow.setContent('<h2 id="marker-title">' + marker.title +
                         '</h2><div id="pano"></div>');
                     var panoramaOptions = {
                         position: nearStreetViewLocation,
@@ -100,7 +103,7 @@ var pickAddressViewModel = function () {
                     var panorama = new google.maps.StreetViewPanorama(
                         document.getElementById('pano'), panoramaOptions);
                 } else {
-                    infowindow.setContent('<h2>' + marker.title + '</h2>' +
+                    infowindow.setContent('<h2 id="marker-title">' + marker.title + '</h2>' +
                         '<div>No Street View Found</div>');
                 }
             }
@@ -109,6 +112,25 @@ var pickAddressViewModel = function () {
             streetViewService.getPanoramaByLocation(marker.position, radius, getStreetView);
             // Open the infowindow on the correct marker.
             infowindow.open(map, marker);
+
+            // load foursquare API
+            foursquareUrl = 'https://api.foursquare.com/v2/venues/explore?client_id=' +
+                foursquare_CLIENT_ID + '&client_secret=' + foursquare_CLIENT_SECRET +
+                '&m=foursquare&v=20140806&ll=' + marker.position.lat() + ',' +
+                marker.position.lng() + '&query=' + marker.title;
+            $.ajax({
+                url: foursquareUrl,
+                cache: false,
+                error: function() {alert('foursquare data failed to load.');}
+            })
+            .done(function(data) {
+                var link = data.response.groups[0].items[0].tips[0].canonicalUrl;
+                var rating = data.response.groups[0].items[0].venue.rating;
+                $('#marker-title').append('<h3>Foursquare Rating: <span class="rating">' + rating +
+                                          '</span></h3>' + '<a class="fsqure-link" href="' + link +
+                                          '" target="new">Foursquare Link</a>');
+            });
+
         }
     };
 

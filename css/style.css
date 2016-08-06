@@ -5,6 +5,7 @@ div,
 header,
 h1,
 h2,
+h3,
 ul,
 li,
 button {
@@ -27,6 +28,11 @@ h1 {
 
 h2 {
     font-size: 20px;
+    color: #315065;
+}
+
+h3 {
+    font-size: 16px;
     color: #315065;
 }
 
@@ -160,8 +166,21 @@ a {
 }
 
 #pano {
-    width: 260px;
+    width: 300px;
     height: 200px;
+}
+
+.fsqure-link {
+    color: #315065;
+    font-size: 16px;
+}
+
+.fsqure-link:hover {
+    color: #db6b6c;
+}
+
+.rating {
+    color: #db6b6c;
 }
 
 /* responsive screen */

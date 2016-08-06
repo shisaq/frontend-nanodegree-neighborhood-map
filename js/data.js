@@ -1,3 +1,4 @@
+/* start model */
 var initialAddresses = [
     {
         title: 'CONSOL Energy Center',
@@ -51,3 +52,7 @@ var initialCurrentAddress = {
 };
 
 var map;
+
+var foursquare_CLIENT_ID = 'E5RPW3KFBNWGODCETUOV2KXBIKDXPGYSE4LE0OKHGSFUD4KO';
+var foursquare_CLIENT_SECRET = 'PCKC1QJNNVO55AWV2J5ZQAXWJ4XGAT0X2NO0BXNTZNC3EPGH';
+var foursquareUrl;
