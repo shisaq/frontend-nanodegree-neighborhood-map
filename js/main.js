@@ -120,17 +120,24 @@ var pickAddressViewModel = function () {
                 marker.position.lng() + '&query=' + marker.title;
             $.ajax({
                 url: foursquareUrl,
-                cache: false,
-                error: function() {alert('foursquare data failed to load.');}
+                cache: false
             })
             .done(function(data) {
                 var link = data.response.groups[0].items[0].tips[0].canonicalUrl;
                 var rating = data.response.groups[0].items[0].venue.rating;
-                $('#marker-title').append('<h3>Foursquare Rating: <span class="rating">' + rating +
-                                          '</span></h3>' + '<a class="fsqure-link" href="' + link +
-                                          '" target="new">Foursquare Link</a>');
+                if (link == null && rating == null) {
+                    // this means nothing about the address
+                    $('#marker-title').append('<h3>This place has not been on Foursquare.</h3>');
+                } else {
+                    // append the content after #marker-title in infowindow
+                    $('#marker-title').append('<h3>Foursquare Rating: <span class="rating">' +
+                                          rating + '</span></h3>' + '<a class="fsqure-link" href="' +
+                                          link + '" target="new">Foursquare Link</a>');
+                }
+            })
+            .fail(function() {
+                alert('Foursquare data failed to load.');
             });
-
         }
     };
 
