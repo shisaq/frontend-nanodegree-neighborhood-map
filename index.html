@@ -18,8 +18,8 @@
                 <input id="address-input" type="text" autofocus="autofocus" placeholder="Search address" data-bind="textInput: currentAddress.title">
                 <button id="address-clear" data-bind="click: clearCurrentAddress">clear</button>
             </div>
-            <ul id="address-list" data-bind="foreach: addressList">
-                <li class="address-item" data-bind="text: title, click: $parent.updateCurrentAddress, visible: $parent.shouldShowOut($data)"></li>
+            <ul id="address-list" data-bind="foreach: filteredList">
+                <li class="address-item" data-bind="text: title, click: $parent.updateCurrentAddress"></li>
             </ul>
         </div>
         <div id="google-map"></div>

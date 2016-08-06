@@ -176,31 +176,33 @@ var pickAddressViewModel = function () {
             self.currentStatus(-50);
     };
 
-    // filter the address list by current address
-    self.shouldShowOut = function (addressItem) {
-        // get the current title from input area
-        var inputTitle = self.currentAddress.title();
-
-        // when current address is null, that means no input,
-        // so every address should be visible
-        if (inputTitle === null) {
-            return ko.observable(true);
+    // make filtered address list depending on the input value
+    self.filteredList = ko.computed(function() {
+        if (self.currentAddress.title() === null) {
+            // no input, return the default list
+            return self.addressList();
         } else {
-            // compare the addresses in the list with current address
-            // `addressItem` means every address item object;
-            // `toLowerCase` makes the input not essensial on letter case;
-            // `indexOf` judges if the input (inside the parenthis) is a part of
-            // the address. Reference from stack overflow:
-            // http://stackoverflow.com/a/3480785/5769598
-            if (addressItem.title().toLowerCase().indexOf(inputTitle.toLowerCase()) >= 0) {
-                addressItem.marker.setVisible(true);
-                return ko.observable(true);
-            } else {
-                addressItem.marker.setVisible(false);
-                return ko.observable(false);
-            }
+            // store the input value, without matching case
+            var filter = self.currentAddress.title().toLowerCase();
+            // define a new list
+            self.newList = ko.observableArray([]);
+            // put every address item in address list compared with the input
+            self.addressList().forEach(function (addressItem) {
+                // this case means it should be showed
+                if(addressItem.title().toLowerCase().indexOf(filter) >= 0) {
+                    // show the marker on google map
+                    addressItem.marker.setVisible(true);
+                    // put it into the new list
+                    self.newList().push(addressItem);
+                } else {
+                    // this case, ignore the address item, and set the marker invisible
+                    addressItem.marker.setVisible(false);
+                }
+            });
+            // return the new list
+            return self.newList();
         }
-    };
+    });
 
     // run fit bounds to make every marker inside the map
     map.fitBounds(self.bounds);
