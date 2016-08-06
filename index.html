@@ -13,15 +13,15 @@
             <button id="hamburger-btn" class="list-btn fontawesome-reorder" data-bind="click: toggleAddressList"></button>
             <h1 class="page-title"><a href="index.html">Neighborhood Map</a></h1>
         </header>
-        <ul id="address-list" data-bind="css: {open: currentStatus() > 0}">
-            <li id="address-search"">
+        <div class="address-sidebar" data-bind="css: {open: currentStatus() > 0}">
+            <div id="address-search"">
                 <input id="address-input" type="text" autofocus="autofocus" placeholder="Search address" data-bind="textInput: currentAddress.title">
                 <button id="address-clear" data-bind="click: clearCurrentAddress">clear</button>
-            </li>
-            <!-- ko foreach: addressList -->
-            <li class="address-item" data-bind="text: title, click: $parent.updateCurrentAddress, visible: $parent.shouldShowOut($data)"></li>
-            <!-- /ko -->
-        </ul>
+            </div>
+            <ul id="address-list" data-bind="foreach: addressList">
+                <li class="address-item" data-bind="text: title, click: $parent.updateCurrentAddress, visible: $parent.shouldShowOut($data)"></li>
+            </ul>
+        </div>
         <div id="google-map"></div>
     </div>
     <script src="js/lib/jquery-3.1.0.min.js"></script>

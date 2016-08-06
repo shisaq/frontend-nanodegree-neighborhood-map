@@ -74,14 +74,12 @@ a {
     display: inline-block;
 }
 
-/* shows all the addresses on the left side of page */
-#address-list {
+.address-sidebar {
     z-index: 10;
     background-color: #db6b6c;
     width: 100%;
     max-width: 300px;
     height: calc(100% - 62px);
-    overflow: auto;
     position: absolute;
     opacity: 0.8;
     /* This trasform moves the drawer off canvas. */
@@ -92,7 +90,7 @@ a {
 }
 
 /* toggle it when click the hamburger button */
-#address-list.open {
+.address-sidebar.open {
     -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
 }
@@ -102,12 +100,8 @@ a {
     padding: 10px 0 10px 10px;
     font-size: 18px;
     font-weight: bold;
-    border-bottom: 1px solid #325165;
+    border-top: 1px solid #325165;
     overflow: hidden;
-}
-
-.address-item:last-child {
-    border-bottom: none;
 }
 
 .address-item:hover {
@@ -119,6 +113,7 @@ a {
 /* this li contains input and filter button */
 #address-search {
     height: 42px;
+    width: 100%;
     padding: 10px 0 10px 10px;
 }
 
@@ -173,6 +168,7 @@ a {
 .fsqure-link {
     color: #315065;
     font-size: 16px;
+    text-decoration: underline;
 }
 
 .fsqure-link:hover {
@@ -193,7 +189,7 @@ a {
         padding-left: 10px;
     }
 
-    #address-list {
+    .address-sidebar {
         -webkit-transform: translate(0, 0);
         transform: translate(0, 0);
         opacity: 1;
