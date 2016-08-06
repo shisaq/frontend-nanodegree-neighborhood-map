@@ -42,7 +42,7 @@ var pickAddressViewModel = function () {
 
     /* define several functions to use */
 
-    // custimize marker color by giving hexadecimal number
+    // customize marker color by giving hexadecimal number
     self.makeMarkerIcon = function (markerColor) {
         var markerImage = new google.maps.MarkerImage(
             'http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|'+ markerColor +
@@ -125,7 +125,7 @@ var pickAddressViewModel = function () {
             .done(function(data) {
                 var link = data.response.groups[0].items[0].tips[0].canonicalUrl;
                 var rating = data.response.groups[0].items[0].venue.rating;
-                if (link == null && rating == null) {
+                if (!link && !rating) {
                     // this means nothing about the address
                     $('#marker-title').append('<h3>This place has not been on Foursquare.</h3>');
                 } else {
@@ -144,13 +144,13 @@ var pickAddressViewModel = function () {
     // build address list from data.js, and show them on the page
     self.addressList = ko.observableArray([]);
     initialAddresses.forEach(function (addressItem) {
-        self.addressList().push(new Address(addressItem));
+        // instance an address class with the data in initialAddresses
+        var address = new Address(addressItem);
+        // push it into addressList
+        self.addressList().push(address);
+        // update google bounds by adding new lat and lng
+        self.bounds.extend(address.marker.position);
     });
-
-    // add marker position into bounds
-    self.addressList().forEach(function (addressItem) {
-        self.bounds.extend(addressItem.marker.position);
-    })
 
     // define the initial currentAddress to null from data.js
     self.currentAddress = new Address(initialCurrentAddress);
@@ -217,4 +217,8 @@ var initMap = function () {
 
     // Instantiate ViewModel
     ko.applyBindings(new pickAddressViewModel());
+};
+
+var googleError = function () {
+    alert('Google Map failed to load.');
 };

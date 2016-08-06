@@ -2,19 +2,20 @@
 
 ## Interface
 
-1. Make sure you've connected the internet
-2. Open the app, you'll find the cursor is on the search area
-3. Below the search area, there is an address list
-4. On the right area, it's google map with 11 markers
-5. If opening the app by using a phone, the address list will hide by default, you can open it by clicking the hamburger button
+1. Open the app, you'll find the cursor is defaultly on the search area
+2. Below the search area, there is an address list
+3. On the right area, it's google map with 11 markers
+4. If opening the app by using a phone, the address list will hide by default, you can open it by clicking the hamburger button
 
 ## How to use
 
-1. You can enter some keywords to filter the addresses
-2. You can click any address in the address list
-3. You can get the info window by clicking any markers on google map
-4. There are 2 parts in the info window: google street view, and Foursquare info
-5. You can click the `clear` button to clear the search area
+1. Make sure you've connected the internet
+2. Open `index.html` to load the app
+3. You can enter some keywords to filter the addresses
+4. You can click any address in the address list
+5. You can get the info window by clicking any markers on google map
+6. There are 2 parts in the info window: google street view, and Foursquare info
+7. You can click the `clear` button to clear the search area
 
 ## Techniques
 
