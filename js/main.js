@@ -178,23 +178,26 @@ var pickAddressViewModel = function () {
         } else {
             // store the input value, without matching case
             var filter = self.currentAddress().toLowerCase();
-            // define a new list
-            self.newList = ko.observableArray([]);
-            // put every address item in address list compared with the input
-            self.addressList().forEach(function (addressItem) {
-                // this case means it should be showed
+            // you can find documentation on arrayFilter here:
+            // http://www.knockmeout.net/2011/04/utility-functions-in-knockoutjs.html
+            return ko.utils.arrayFilter(self.addressList(), function(addressItem) {
                 if(addressItem.title().toLowerCase().indexOf(filter) >= 0) {
                     // show the marker on google map
                     addressItem.marker.setVisible(true);
-                    // put it into the new list
-                    self.newList().push(addressItem);
+                    // follows same rules as Array.prototype.filter
+                    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+                    // when return true, we "keep" the element
+                    return true;
                 } else {
                     // this case, ignore the address item, and set the marker invisible
                     addressItem.marker.setVisible(false);
+                    // when return false, it is not in the returned array
+                    return false;
                 }
+                // note that if we did not need to keep track of marker visibility, we could
+                // shorten code by doing this:
+                // return addressItem.title().toLowerCase().indexOf(filter) >= 0
             });
-            // return the new list
-            return self.newList();
         }
     });
 
